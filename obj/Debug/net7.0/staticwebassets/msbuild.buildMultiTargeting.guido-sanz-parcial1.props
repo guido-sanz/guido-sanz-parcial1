@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\guido-sanz-parcial1.props" />
+</Project>

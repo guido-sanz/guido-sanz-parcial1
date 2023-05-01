@@ -1,0 +1,86 @@
+@model guido_sanz_parcial1.Models.Agency
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Agencia @Html.DisplayFor(model => model.Name)</h1>
+
+<div>
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Volver al listado de agencias</a>
+</div>
+
+<h1>Inventario Motos</h1>
+<div>
+    <table class="table">
+    <thead>
+        <tr>
+            <th>
+                Marca
+            </th>
+            <th>
+                Modelo
+            </th>
+            <th>
+                Tipo
+            </th>
+            <th>
+                Precio
+            </th>
+            <th>
+                Cantidad disponible
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@if (Model.InvertoryList != null)
+{
+    @foreach (var item in Model.InvertoryList) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Moto.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Moto.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Moto.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Moto.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                <a asp-controller="Inventory" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-controller="Inventory" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-controller="Inventory" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+}
+    </tbody>
+</table>
+</div>
+<div>   
+    <a class="btn btn-primary" asp-controller="Inventory" asp-action="Create" asp-route-id="@Model.Id">Agregar moto al inventario</a>
+</div>
+

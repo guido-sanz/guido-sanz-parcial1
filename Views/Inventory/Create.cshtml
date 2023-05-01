@@ -1,0 +1,45 @@
+@model guido_sanz_parcial1.ViewModels.InventoryCreate
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Agregar moto al inventario</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <select asp-for="Inventory.IdMoto" class="form-control">
+                    @if (Model.Motos != null && Model.Motos.Count > 0){
+                        @foreach (var item in Model.Motos) {
+                            <option value="@item.Id">@item.Brand @item.Model</option>
+                        }
+                    }else{
+                        <option value="">No hay motos disponibles</option>
+                    }                   
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Inventory.Quantity" class="control-label"></label>
+                <input asp-for="Inventory.Quantity" class="form-control" type="number"/>
+                <span asp-validation-for="Inventory.Quantity" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Inventory.IdAgency" value=@Model.IdAgency/>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-primary" asp-controller="Agency" asp-action="Details">Volver al inventario</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
