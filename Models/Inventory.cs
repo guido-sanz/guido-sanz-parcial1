@@ -7,7 +7,8 @@ public class Inventory{
     public int IdMoto { get; set; }
 
     public int IdAgency { get; set; }
-    [Range(1,1000)]
+    [Range(0,1000)]
+    [Display(Name="Cantidad")]
     public int Quantity { get; set; }
 
     public virtual Moto? Moto { get; set; }
