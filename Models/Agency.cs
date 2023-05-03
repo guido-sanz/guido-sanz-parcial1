@@ -14,5 +14,5 @@ public class Agency{
     [Display(Name="Contacto")]
     public string Phone { get; set; }
    
-    public virtual List<Inventory>? InvertoryList { get; set; }
+    public virtual List<Inventory> Invertories { get; set; } = new();
 }

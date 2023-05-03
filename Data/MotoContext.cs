@@ -19,22 +19,22 @@ namespace guido_sanz_parcial1.Data
 
         public DbSet<guido_sanz_parcial1.Models.Inventory> Inventory { get; set; } = default!;
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Agency>()
-            .HasMany(p=> p.InvertoryList)
-            .WithOne(p=> p.Agency)
-            .HasForeignKey(p => p.IdAgency);
+        // protected override void OnModelCreating(ModelBuilder modelBuilder)
+        // {
+        //     modelBuilder.Entity<Agency>()
+        //     .HasMany(p=> p.InvertoryList)
+        //     .WithOne(p=> p.Agency)
+        //     .HasForeignKey(p => p.IdAgency);
 
-            modelBuilder.Entity<Inventory>()
-            .HasOne(p => p.Agency)
-            .WithMany()
-            .HasForeignKey(p => p.IdAgency);
+        //     modelBuilder.Entity<Inventory>()
+        //     .HasOne(p => p.Agency)
+        //     .WithMany()
+        //     .HasForeignKey(p => p.IdAgency);
 
-            modelBuilder.Entity<Inventory>()
-            .HasOne(p => p.Moto)
-            .WithMany()
-            .HasForeignKey(p => p.IdMoto);
-        }
+        //     modelBuilder.Entity<Inventory>()
+        //     .HasOne(p => p.Moto)
+        //     .WithMany()
+        //     .HasForeignKey(p => p.IdMoto);
+        // }
     }
 }

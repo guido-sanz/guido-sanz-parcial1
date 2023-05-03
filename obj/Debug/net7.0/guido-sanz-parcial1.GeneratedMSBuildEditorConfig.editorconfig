@@ -9,97 +9,97 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = guido_sanz_parcial1
 build_property.RootNamespace = guido_sanz_parcial1
-build_property.ProjectDir = C:\Users\guido\OneDrive\Escritorio\guido-sanz-parcial1\
+build_property.ProjectDir = /Users/fondo/Documents/Proyects/HerramientasDeProgramacion/guido-sanz-parcial1/
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\guido\OneDrive\Escritorio\guido-sanz-parcial1
+build_property.MSBuildProjectDirectory = /Users/fondo/Documents/Proyects/HerramientasDeProgramacion/guido-sanz-parcial1
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/guido/OneDrive/Escritorio/guido-sanz-parcial1/Views/Agency/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWdlbmN5XENyZWF0ZS5jc2h0bWw=
+[/Users/fondo/Documents/Proyects/HerramientasDeProgramacion/guido-sanz-parcial1/Views/Agency/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWdlbmN5L0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/guido/OneDrive/Escritorio/guido-sanz-parcial1/Views/Agency/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWdlbmN5XERlbGV0ZS5jc2h0bWw=
+[/Users/fondo/Documents/Proyects/HerramientasDeProgramacion/guido-sanz-parcial1/Views/Agency/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWdlbmN5L0RlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/guido/OneDrive/Escritorio/guido-sanz-parcial1/Views/Agency/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWdlbmN5XERldGFpbHMuY3NodG1s
+[/Users/fondo/Documents/Proyects/HerramientasDeProgramacion/guido-sanz-parcial1/Views/Agency/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWdlbmN5L0RldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/guido/OneDrive/Escritorio/guido-sanz-parcial1/Views/Agency/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWdlbmN5XEVkaXQuY3NodG1s
+[/Users/fondo/Documents/Proyects/HerramientasDeProgramacion/guido-sanz-parcial1/Views/Agency/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWdlbmN5L0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/guido/OneDrive/Escritorio/guido-sanz-parcial1/Views/Agency/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWdlbmN5XEluZGV4LmNzaHRtbA==
+[/Users/fondo/Documents/Proyects/HerramientasDeProgramacion/guido-sanz-parcial1/Views/Agency/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWdlbmN5L0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/guido/OneDrive/Escritorio/guido-sanz-parcial1/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+[/Users/fondo/Documents/Proyects/HerramientasDeProgramacion/guido-sanz-parcial1/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/guido/OneDrive/Escritorio/guido-sanz-parcial1/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+[/Users/fondo/Documents/Proyects/HerramientasDeProgramacion/guido-sanz-parcial1/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/guido/OneDrive/Escritorio/guido-sanz-parcial1/Views/Inventory/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XENyZWF0ZS5jc2h0bWw=
+[/Users/fondo/Documents/Proyects/HerramientasDeProgramacion/guido-sanz-parcial1/Views/Inventory/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW52ZW50b3J5L0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/guido/OneDrive/Escritorio/guido-sanz-parcial1/Views/Inventory/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XERlbGV0ZS5jc2h0bWw=
+[/Users/fondo/Documents/Proyects/HerramientasDeProgramacion/guido-sanz-parcial1/Views/Inventory/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW52ZW50b3J5L0RlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/guido/OneDrive/Escritorio/guido-sanz-parcial1/Views/Inventory/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XERldGFpbHMuY3NodG1s
+[/Users/fondo/Documents/Proyects/HerramientasDeProgramacion/guido-sanz-parcial1/Views/Inventory/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW52ZW50b3J5L0RldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/guido/OneDrive/Escritorio/guido-sanz-parcial1/Views/Inventory/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XEVkaXQuY3NodG1s
+[/Users/fondo/Documents/Proyects/HerramientasDeProgramacion/guido-sanz-parcial1/Views/Inventory/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW52ZW50b3J5L0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/guido/OneDrive/Escritorio/guido-sanz-parcial1/Views/Inventory/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XEluZGV4LmNzaHRtbA==
+[/Users/fondo/Documents/Proyects/HerramientasDeProgramacion/guido-sanz-parcial1/Views/Inventory/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW52ZW50b3J5L0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/guido/OneDrive/Escritorio/guido-sanz-parcial1/Views/Moto/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b1xDcmVhdGUuY3NodG1s
+[/Users/fondo/Documents/Proyects/HerramientasDeProgramacion/guido-sanz-parcial1/Views/Moto/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTW90by9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/guido/OneDrive/Escritorio/guido-sanz-parcial1/Views/Moto/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b1xEZWxldGUuY3NodG1s
+[/Users/fondo/Documents/Proyects/HerramientasDeProgramacion/guido-sanz-parcial1/Views/Moto/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTW90by9EZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/guido/OneDrive/Escritorio/guido-sanz-parcial1/Views/Moto/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b1xEZXRhaWxzLmNzaHRtbA==
+[/Users/fondo/Documents/Proyects/HerramientasDeProgramacion/guido-sanz-parcial1/Views/Moto/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTW90by9EZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/guido/OneDrive/Escritorio/guido-sanz-parcial1/Views/Moto/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b1xFZGl0LmNzaHRtbA==
+[/Users/fondo/Documents/Proyects/HerramientasDeProgramacion/guido-sanz-parcial1/Views/Moto/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTW90by9FZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/guido/OneDrive/Escritorio/guido-sanz-parcial1/Views/Moto/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b1xJbmRleC5jc2h0bWw=
+[/Users/fondo/Documents/Proyects/HerramientasDeProgramacion/guido-sanz-parcial1/Views/Moto/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTW90by9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/guido/OneDrive/Escritorio/guido-sanz-parcial1/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+[/Users/fondo/Documents/Proyects/HerramientasDeProgramacion/guido-sanz-parcial1/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/guido/OneDrive/Escritorio/guido-sanz-parcial1/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[/Users/fondo/Documents/Proyects/HerramientasDeProgramacion/guido-sanz-parcial1/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/guido/OneDrive/Escritorio/guido-sanz-parcial1/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[/Users/fondo/Documents/Proyects/HerramientasDeProgramacion/guido-sanz-parcial1/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/guido/OneDrive/Escritorio/guido-sanz-parcial1/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+[/Users/fondo/Documents/Proyects/HerramientasDeProgramacion/guido-sanz-parcial1/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/guido/OneDrive/Escritorio/guido-sanz-parcial1/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-0qz3qcu8jo
+[/Users/fondo/Documents/Proyects/HerramientasDeProgramacion/guido-sanz-parcial1/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-bo1rsr9t2p
