@@ -4,7 +4,7 @@ namespace guido_sanz_parcial1.ViewModels;
 
 public class InventoryCreate{
 
-    public int IdAgency { get; set;}
+    public int AgencyId { get; set;}
 
     public List<Moto> Motos { get; set;}
 

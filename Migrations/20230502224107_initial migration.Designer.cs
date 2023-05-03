@@ -10,8 +10,8 @@ using guido_sanz_parcial1.Data;
 namespace guido_sanz_parcial1.Migrations
 {
     [DbContext(typeof(MotoContext))]
-    [Migration("20230430162008_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20230502224107_initial migration")]
+    partial class initialmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,21 +48,18 @@ namespace guido_sanz_parcial1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("IdAgency")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("IdMoto")
+                    b.Property<int>("AgencyId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("MotoId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("quantity")
+                    b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdAgency");
+                    b.HasIndex("AgencyId");
 
                     b.HasIndex("MotoId");
 
@@ -86,11 +83,11 @@ namespace guido_sanz_parcial1.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<double>("Price")
+                        .HasColumnType("REAL");
+
                     b.Property<int>("Type")
                         .HasColumnType("INTEGER");
-
-                    b.Property<double>("price")
-                        .HasColumnType("REAL");
 
                     b.HasKey("Id");
 
@@ -100,8 +97,8 @@ namespace guido_sanz_parcial1.Migrations
             modelBuilder.Entity("guido_sanz_parcial1.Models.Inventory", b =>
                 {
                     b.HasOne("guido_sanz_parcial1.Models.Agency", "Agency")
-                        .WithMany("InvertoryList")
-                        .HasForeignKey("IdAgency")
+                        .WithMany("Invertories")
+                        .HasForeignKey("AgencyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -118,7 +115,7 @@ namespace guido_sanz_parcial1.Migrations
 
             modelBuilder.Entity("guido_sanz_parcial1.Models.Agency", b =>
                 {
-                    b.Navigation("InvertoryList");
+                    b.Navigation("Invertories");
                 });
 #pragma warning restore 612, 618
         }
