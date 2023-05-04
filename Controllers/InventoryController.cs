@@ -52,7 +52,7 @@ namespace guido_sanz_parcial1.Controllers
         {
             
             InventoryCreate inventoryCreate = new InventoryCreate();
-            inventoryCreate.IdAgency = id;
+            inventoryCreate.AgencyId = id;
             inventoryCreate.Motos = _context.Moto.ToList();
             inventoryCreate.Inventory = new Inventory();
             return View(inventoryCreate);
@@ -63,7 +63,7 @@ namespace guido_sanz_parcial1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,IdMoto,IdAgency,Quantity")] Inventory inventory)
+        public async Task<IActionResult> Create([Bind("Id,MotoId,AgencyId,Quantity")] Inventory inventory)
         {
             if (ModelState.IsValid)
             {
@@ -71,7 +71,7 @@ namespace guido_sanz_parcial1.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(inventory);
+            return View();
         }
 
         // GET: Inventory/Edit/5
@@ -95,7 +95,7 @@ namespace guido_sanz_parcial1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,IdMoto,IdAgency,quantity")] Inventory inventory)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,MotoId,AgencyId,Quantity")] Inventory inventory)
         {
             if (id != inventory.Id)
             {
@@ -120,7 +120,7 @@ namespace guido_sanz_parcial1.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "Agency", new { id = inventory.AgencyId });
             }
             return View(inventory);
         }

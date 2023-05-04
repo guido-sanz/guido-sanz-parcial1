@@ -4,15 +4,14 @@ public class Inventory{
 
     public int Id { get; set; }
 
-    public int IdMoto { get; set; }
+    public int? MotoId { get; set; }
 
-    public int IdAgency { get; set; }
-    [Range(0,1000)]
+    public int? AgencyId { get; set; }
     [Display(Name="Cantidad")]
     public int Quantity { get; set; }
 
     public virtual Moto? Moto { get; set; }
 
-    public virtual Agency? Agency { get; set; }    
+    public virtual Agency? Agency { get; set; }
     
 }

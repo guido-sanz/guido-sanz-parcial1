@@ -36,7 +36,7 @@ namespace guido_sanz_parcial1.Controllers
                 return NotFound();
             }
 
-            var agency = await _context.Agency.Include(x=> x.InvertoryList)
+            var agency = await _context.Agency.Include(x=> x.Invertorys).ThenInclude(i => i.Moto)
                 .FirstOrDefaultAsync(m => m.Id == id);
                 
             if (agency == null)

@@ -47,9 +47,9 @@
         </tr>
     </thead>
     <tbody>
-@if (Model.InvertoryList != null)
+@if (Model.Invertorys != null)
 {
-    @foreach (var item in Model.InvertoryList) {
+    @foreach (var item in Model.Invertorys) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Moto.Brand)
@@ -67,9 +67,8 @@
                 @Html.DisplayFor(modelItem => item.Quantity)
             </td>
             <td>
-                <a asp-controller="Inventory" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-controller="Inventory" asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-controller="Inventory" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a class="btn btn-primary"asp-controller="Inventory" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                <a class="btn btn-danger"asp-controller="Inventory" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
             </td>
         </tr>
     }
