@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using guido_sanz_parcial1.Data;
 using guido_sanz_parcial1.Models;
+using guido_sanz_parcial1.ViewModels;
 
 namespace guido_sanz_parcial1.Controllers
 {
@@ -20,11 +21,19 @@ namespace guido_sanz_parcial1.Controllers
         }
 
         // GET: Moto
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? nameFilter)
         {
-              return _context.Moto != null ? 
-                          View(await _context.Moto.ToListAsync()) :
-                          Problem("Entity set 'MvcMotoContext.Moto'  is null.");
+            var query = from moto in _context.Moto select moto;
+            if(!string.IsNullOrEmpty(nameFilter)){
+                query = query.Where(x => x.Brand.ToLower().Contains(nameFilter.ToLower()));
+            }
+
+            MotoViewModel motos = new MotoViewModel();
+            motos.Motos = await query.ToListAsync();
+
+            return _context.Moto != null ? 
+                        View(motos) :
+                        Problem("Entity set 'MvcMotoContext.Moto'  is null.");
         }
 
         // GET: Moto/Details/5
@@ -56,7 +65,7 @@ namespace guido_sanz_parcial1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Brand,Model,CubicCentimeters,Type,price")] Moto moto)
+        public async Task<IActionResult> Create([Bind("Id,Brand,Model,CubicCentimeters,Type,Price")] Moto moto)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +97,7 @@ namespace guido_sanz_parcial1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Brand,Model,CubicCentimeters,Type,price")] Moto moto)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Brand,Model,CubicCentimeters,Type,Price")] Moto moto)
         {
             if (id != moto.Id)
             {

@@ -1,28 +1,36 @@
-@model IEnumerable<guido_sanz_parcial1.Models.Agency>
+@using guido_sanz_parcial1.ViewModels;
+@model guido_sanz_parcial1.ViewModels.AgencyViewModel;
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Listado de agencias de motos</h1>
     <div class="container">
+        <h1>Listado de agencias de motos</h1>
+
+        <form method="get" asp-action="Index">
+            <div class="col-2 form-group">
+                <input class="form-control" asp-for="NameFilter"/> 
+                <button class="btn btn-primary" type="submit">Buscar</button>          
+            </div>
+        </form>
         <table class="table table-hover table-responsive max-width-75">
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Name)
+                        @Html.DisplayNameFor(model => model.Agency.Name)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Address)
+                        @Html.DisplayNameFor(model => model.Agency.Address)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Phone)
+                        @Html.DisplayNameFor(model => model.Agency.Phone)
                     </th>
                     <th></th>
                 </tr>
             </thead>
             <tbody >
-            @foreach (var item in Model) {
+            @foreach (var item in Model.Agencys) {
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.Name)
@@ -37,14 +45,15 @@
                         <div>
                             <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
                             <a class="btn btn-primary btn-sm mr-2" asp-action="Details" asp-route-id="@item.Id">Inventario</a>
-                            <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
                         </div>
                     </td>
                 </tr>
         }
             </tbody>
         </table>
+        <div>
+            <a class="btn btn-success" asp-action="Create">Crear nueva agencia</a>
+        </div>
     </div>   
-<div class="text-left mt-4">
-        <a class="btn btn-success" asp-action="Create">Crear nueva agencia</a>
-</div>
+

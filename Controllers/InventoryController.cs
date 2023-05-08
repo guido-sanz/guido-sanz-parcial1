@@ -69,7 +69,7 @@ namespace guido_sanz_parcial1.Controllers
             {
                 _context.Add(inventory);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "Agency", new { id = inventory.AgencyId });
             }
             return View();
         }
@@ -133,7 +133,7 @@ namespace guido_sanz_parcial1.Controllers
                 return NotFound();
             }
 
-            var inventory = await _context.Inventory
+            var inventory = await _context.Inventory.Include(x=> x.Moto)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (inventory == null)
             {
@@ -159,7 +159,7 @@ namespace guido_sanz_parcial1.Controllers
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Details", "Agency", new { id = inventory.AgencyId });
         }
 
         private bool InventoryExists(int id)

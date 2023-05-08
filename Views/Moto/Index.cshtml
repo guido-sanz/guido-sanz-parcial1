@@ -1,4 +1,5 @@
-@model IEnumerable<guido_sanz_parcial1.Models.Moto>
+@using guido_sanz_parcial1.ViewModels;
+@model guido_sanz_parcial1.ViewModels.MotoViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -6,30 +7,36 @@
 
 <h1>Listado de motos</h1>
 
+<form method="get" asp-action="Index">
+    <div class="col-2 form-group">
+        <input class="form-control" asp-for="NameFilter"/> 
+        <button class="btn btn-primary" type="submit">Buscar</button>          
+    </div>
+</form>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Brand)
+                @Html.DisplayNameFor(model => model.Moto.Brand)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Model)
+                @Html.DisplayNameFor(model => model.Moto.Model)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CubicCentimeters)
+                @Html.DisplayNameFor(model => model.Moto.CubicCentimeters)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Type)
+                @Html.DisplayNameFor(model => model.Moto.Type)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                @Html.DisplayNameFor(model => model.Moto.Price)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Motos) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Brand)
@@ -49,7 +56,6 @@
             <td>
                 <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
                 <a class="btn btn-primary btn-sm mr-2" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
-                <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
             </td>
         </tr>
 }

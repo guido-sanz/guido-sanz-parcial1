@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using guido_sanz_parcial1.Data;
 using guido_sanz_parcial1.Models;
+using guido_sanz_parcial1.ViewModels;
 
 namespace guido_sanz_parcial1.Controllers
 {
@@ -20,10 +21,18 @@ namespace guido_sanz_parcial1.Controllers
         }
 
         // GET: Agency
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? nameFilter)
         {
+            var query = from agency in _context.Agency select agency;
+            if(!string.IsNullOrEmpty(nameFilter)){
+                query = query.Where(x => x.Name.ToLower().Contains(nameFilter.ToLower()));
+            }
+
+            AgencyViewModel agencys = new AgencyViewModel();
+            agencys.Agencys = await query.ToListAsync();
+
               return _context.Agency != null ? 
-                          View(await _context.Agency.ToListAsync()) :
+                          View(agencys) :
                           Problem("Entity set 'AgencyContext.Agency'  is null.");
                           
         }
@@ -147,12 +156,15 @@ namespace guido_sanz_parcial1.Controllers
             {
                 return Problem("Entity set 'MvcAgencyContext.Agency'  is null.");
             }
-            var agency = await _context.Agency.FindAsync(id);
+            var agency = await _context.Agency.Include(x=> x.Invertorys).ThenInclude(i => i.Moto)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (agency != null)
             {
+
+                _context.Inventory.RemoveRange(agency.Invertorys);
                 _context.Agency.Remove(agency);
             }
-            
+             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

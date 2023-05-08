@@ -25,6 +25,7 @@ namespace guido_sanz_parcial1.Data
                 .HasOne(i => i.Moto)
                 .WithMany()
                 .HasForeignKey(i => i.MotoId);
+
         }
     }
 
