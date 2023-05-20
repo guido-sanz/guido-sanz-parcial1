@@ -16,9 +16,10 @@
 
 ## :hammer:Funcionalidades del proyecto
 
-- `Funcionalidad 1`: Administración de agencias
-      - Creación de agencias con información básica (nombre, ubicación, contacto, etc.)
-      - Edición y actualización de detalles de agencias existentes.
-      - Asignación de usuarios y permisos a cada agencia.
+#- `Funcionalidad 1`: Administración de agencias
+      ##- Creación de agencias con información básica (nombre, ubicación, contacto, etc.)
+      ##- Edición y actualización de detalles de agencias existentes.
+      ##- Asignación de usuarios y permisos a cada agencia.
+      
 - `Funcionalidad 2`: Gestión de inventarios
       - 
