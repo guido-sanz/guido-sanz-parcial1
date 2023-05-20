@@ -37,3 +37,8 @@
 
 - `¿Como acceder al proyecto`:
     - [Link a repositorio github](https://github.com/guido-sanz/guido-sanz-parcial1)
+
+## 🛠️ Abre y ejecuta el proyecto
+
+-  `¿Como ejecutar el proyecto`:
+    - 
