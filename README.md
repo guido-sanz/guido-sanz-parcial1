@@ -13,3 +13,5 @@
 
 <h2>Descripción del Proyecto</h2>
 <p>El proyecto existente es un sistema de gestión que permite administrar agencias de motos, controlar inventarios y supervisar las motos en stock. Proporciona una plataforma donde los usuarios pueden crear agencias, agregar y actualizar motos en sus inventarios exclusivos, así como realizar un seguimiento de las ventas y generar informes relacionados. El objetivo es optimizar la gestión de las agencias de motos, mejorar la eficiencia en el control de inventarios y brindar herramientas para el seguimiento y análisis de datos relevantes.</p>
+
+## :hammer:Funcionalidades del proyecto
