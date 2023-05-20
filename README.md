@@ -22,4 +22,13 @@
     - Asignación de usuarios y permisos a cada agencia.
       
 - `Funcionalidad 2`: Gestión de inventarios
-      - 
+    - Creación de inventarios exclusivos para cada agencia.
+    - Edición y actualización de detalles de agencias existentes.
+    - Agregado de motos al inventario con detalles específicos (marca, modelo, año, características, precios, etc.).
+    - Actualización y eliminación de motos existentes en el inventario.
+    - Seguimiento de la disponibilidad de las motos en stock.
+
+- `Funcionalidad 3`: Control de ventas
+    - Registro de ventas de motos realizadas por cada agencia.
+    - Seguimiento de las motos vendidas y su estado actual.
+    - Generación de informes de ventas, incluyendo datos como agencia, moto vendida, fecha y precio.
