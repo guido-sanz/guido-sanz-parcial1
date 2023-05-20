@@ -33,7 +33,7 @@
     - Seguimiento de las motos vendidas y su estado actual.
     - Generación de informes de ventas, incluyendo datos como agencia, moto vendida, fecha y precio.
 
-\## 📁 Acceso al proyecto
+📁 Acceso al proyecto
 
 - `¿Como acceder al proyecto`:
     - [Link a repositorio github](https://github.com/guido-sanz/guido-sanz-parcial1)
