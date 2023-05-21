@@ -42,11 +42,11 @@
 
 -  `¿Como ejecutar el proyecto`:
     - 1° instalar la dependencias para utilizar ORM
-     - dotnet tool install --global dotnet-aspnet-codegenerator
-     - dotnet tool install --global dotnet-ef
-     - dotnet add package Microsoft.EntityFrameworkCore.Design
-     - dotnet add package Microsoft.EntityFrameworkCore.SQLite
-     - dotnet add packageMicrosoft.VisualStudio.Web.CodeGeneration.Design
-     - dotnet add package Microsoft.EntityFrameworkCore.Tools
+          - "dotnet tool install --global dotnet-aspnet-codegenerator"
+          - "dotnet tool install --global dotnet-ef"
+          - "dotnet add package Microsoft.EntityFrameworkCore.Design"
+          - "dotnet add package Microsoft.EntityFrameworkCore.SQLite"
+          - "dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design"
+          - "dotnet add package Microsoft.EntityFrameworkCore.Tools"
     - 2° Ejecutar el comando "dotnet build"
     - 3° ejecutar el comando "dotnet run" para iniciar la aplicacion
