@@ -50,3 +50,9 @@
         - "dotnet add package Microsoft.EntityFrameworkCore.Tools"
     - 2° Ejecutar el comando "dotnet build"
     - 3° ejecutar el comando "dotnet run" para iniciar la aplicacion
+
+## ✔️:Tecnologías utilizadas
+  - Microsoft .NET
+  - HTML
+  - JAVASCRIPT
+
