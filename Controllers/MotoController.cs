@@ -1,51 +1,47 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using guido_sanz_parcial1.Data;
 using guido_sanz_parcial1.Models;
 using guido_sanz_parcial1.ViewModels;
+using guido_sanz_parcial1.Services;
 
 namespace guido_sanz_parcial1.Controllers
 {
     public class MotoController : Controller
     {
-        private readonly MotoContext _context;
 
-        public MotoController(MotoContext context)
+        private readonly IMotoService _motoService;
+
+        public MotoController(IMotoService motoService)
         {
-            _context = context;
+            _motoService = motoService;
         }
 
         // GET: Moto
-        public async Task<IActionResult> Index(string? nameFilter)
+        public IActionResult Index(string? nameFilter)
         {
-            var query = from moto in _context.Moto select moto;
+            MotoViewModel motos;
+
             if(!string.IsNullOrEmpty(nameFilter)){
-                query = query.Where(x => x.Brand.ToLower().Contains(nameFilter.ToLower()));
+                motos = _motoService.GetAll(nameFilter);
+            }else{
+                motos = _motoService.GetAll();
             }
 
-            MotoViewModel motos = new MotoViewModel();
-            motos.Motos = await query.ToListAsync();
-
-            return _context.Moto != null ? 
+            return motos != null ? 
                         View(motos) :
                         Problem("Entity set 'MvcMotoContext.Moto'  is null.");
         }
 
         // GET: Moto/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
-            if (id == null || _context.Moto == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var moto = await _context.Moto
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var moto = _motoService.GetById(id.Value);
+
             if (moto == null)
             {
                 return NotFound();
@@ -65,26 +61,25 @@ namespace guido_sanz_parcial1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Brand,Model,CubicCentimeters,Type,Price")] Moto moto)
+        public IActionResult Create([Bind("Id,Brand,Model,CubicCentimeters,Type,Price")] Moto moto)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(moto);
-                await _context.SaveChangesAsync();
+                _motoService.Update(moto);
                 return RedirectToAction(nameof(Index));
             }
             return View(moto);
         }
 
         // GET: Moto/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
-            if (id == null || _context.Moto == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var moto = await _context.Moto.FindAsync(id);
+            var moto =  _motoService.GetById(id.Value);
             if (moto == null)
             {
                 return NotFound();
@@ -108,8 +103,7 @@ namespace guido_sanz_parcial1.Controllers
             {
                 try
                 {
-                    _context.Update(moto);
-                    await _context.SaveChangesAsync();
+                    _motoService.Update(moto);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -130,13 +124,12 @@ namespace guido_sanz_parcial1.Controllers
         // GET: Moto/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Moto == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var moto = await _context.Moto
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var moto = _motoService.GetById(id.Value);
             if (moto == null)
             {
                 return NotFound();
@@ -148,25 +141,21 @@ namespace guido_sanz_parcial1.Controllers
         // POST: Moto/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            if (_context.Moto == null)
-            {
-                return Problem("Entity set 'MvcMotoContext.Moto'  is null.");
-            }
-            var moto = await _context.Moto.FindAsync(id);
+            var moto = _motoService.GetById(id);
             if (moto != null)
             {
-                _context.Moto.Remove(moto);
+                _motoService.Delete(moto);
             }
             
-            await _context.SaveChangesAsync();
+            
             return RedirectToAction(nameof(Index));
         }
 
         private bool MotoExists(int id)
         {
-          return (_context.Moto?.Any(e => e.Id == id)).GetValueOrDefault();
+          return _motoService.GetById(id) != null;
         }
     }
 }

@@ -1,52 +1,46 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using guido_sanz_parcial1.Data;
 using guido_sanz_parcial1.Models;
 using guido_sanz_parcial1.ViewModels;
+using guido_sanz_parcial1.Services;
 
 namespace guido_sanz_parcial1.Controllers
 {
     public class AgencyController : Controller
     {
-        private readonly MotoContext _context;
+        private readonly IAgencyService _agencyService;
 
-        public AgencyController(MotoContext context)
+        public AgencyController(IAgencyService agencyService)
         {
-            _context = context;
+            _agencyService = agencyService;
         }
 
         // GET: Agency
-        public async Task<IActionResult> Index(string? nameFilter)
+        public IActionResult Index(string? nameFilter)
         {
-            var query = from agency in _context.Agency select agency;
+            AgencyViewModel agencys;
+
             if(!string.IsNullOrEmpty(nameFilter)){
-                query = query.Where(x => x.Name.ToLower().Contains(nameFilter.ToLower()));
+                agencys = _agencyService.GetAll(nameFilter);
+            }else{
+                agencys = _agencyService.GetAll();
             }
 
-            AgencyViewModel agencys = new AgencyViewModel();
-            agencys.Agencys = await query.ToListAsync();
-
-              return _context.Agency != null ? 
-                          View(agencys) :
-                          Problem("Entity set 'AgencyContext.Agency'  is null.");
+            return agencys != null ? 
+                        View(agencys) :
+                        Problem("Entity set 'AgencyContext.Agency'  is null.");
                           
         }
 
         // GET: Agency/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
-            if (id == null || _context.Agency == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var agency = await _context.Agency.Include(x=> x.Invertorys).ThenInclude(i => i.Moto)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var agency = _agencyService.GetAgencyWithInventoryById(id.Value);
                 
             if (agency == null)
             {
@@ -71,22 +65,21 @@ namespace guido_sanz_parcial1.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(agency);
-                await _context.SaveChangesAsync();
+                _agencyService.Update(agency);
                 return RedirectToAction(nameof(Index));
             }
             return View(agency);
         }
 
         // GET: Agency/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
-            if (id == null || _context.Agency == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var agency = await _context.Agency.FindAsync(id);
+            var agency = _agencyService.GetById(id.Value);
             if (agency == null)
             {
                 return NotFound();
@@ -110,8 +103,7 @@ namespace guido_sanz_parcial1.Controllers
             {
                 try
                 {
-                    _context.Update(agency);
-                    await _context.SaveChangesAsync();
+                    _agencyService.Update(agency);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -132,13 +124,12 @@ namespace guido_sanz_parcial1.Controllers
         // GET: Agency/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Agency == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var agency = await _context.Agency
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var agency = _agencyService.GetById(id.Value);
             if (agency == null)
             {
                 return NotFound();
@@ -152,26 +143,17 @@ namespace guido_sanz_parcial1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Agency == null)
-            {
-                return Problem("Entity set 'MvcAgencyContext.Agency'  is null.");
-            }
-            var agency = await _context.Agency.Include(x=> x.Invertorys).ThenInclude(i => i.Moto)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var agency = _agencyService.GetAgencyWithInventoryById(id);
             if (agency != null)
             {
-
-                _context.Inventory.RemoveRange(agency.Invertorys);
-                _context.Agency.Remove(agency);
+                _agencyService.Delete(agency);               
             }
-             
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool AgencyExists(int id)
         {
-          return (_context.Agency?.Any(e => e.Id == id)).GetValueOrDefault();
+          return _agencyService.GetById(id) != null;
         }
     }
 }

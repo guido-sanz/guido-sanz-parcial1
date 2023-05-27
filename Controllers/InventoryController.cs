@@ -1,44 +1,42 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using guido_sanz_parcial1.Data;
 using guido_sanz_parcial1.Models;
 using guido_sanz_parcial1.ViewModels;
-using guido_sanz_parcial1.Utils;
+using guido_sanz_parcial1.Services;
 
 namespace guido_sanz_parcial1.Controllers
 {
     public class InventoryController : Controller
     {
-        private readonly MotoContext _context;
+        private readonly IInventoryService _inventoryService;
+        private readonly IMotoService _motoService;
 
-        public InventoryController(MotoContext context)
+
+        public InventoryController(IInventoryService inventoryService, IMotoService motoService)
         {
-            _context = context;
+            _inventoryService = inventoryService;
+            _motoService = motoService;
         }
 
         // GET: Inventory
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-              return _context.Inventory != null ? 
-                          View(await _context.Inventory.ToListAsync()) :
-                          Problem("Entity set 'MvcInventoryContext.Inventory'  is null.");
+            var inventorys = _inventoryService.GetAll();
+            return inventorys != null ? 
+                        View(inventorys) :
+                        Problem("No se encontro ningun inventario");
         }
 
         // GET: Inventory/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
-            if (id == null || _context.Inventory == null)
+            if (id == null)
             {
                 return NotFound();
             }
-
-            var inventory = await _context.Inventory
-                .FirstOrDefaultAsync(m => m.Id == id);
+            
+            var inventory = _inventoryService.GetById(id.Value);
             if (inventory == null)
             {
                 return NotFound();
@@ -49,11 +47,10 @@ namespace guido_sanz_parcial1.Controllers
 
         // GET: Inventory/Create
         public IActionResult Create(int id)
-        {
-            
+        {            
             InventoryCreate inventoryCreate = new InventoryCreate();
             inventoryCreate.AgencyId = id;
-            inventoryCreate.Motos = _context.Moto.ToList();
+            inventoryCreate.Motos = _motoService.GetAll().Motos;
             inventoryCreate.Inventory = new Inventory();
             return View(inventoryCreate);
         }
@@ -67,22 +64,21 @@ namespace guido_sanz_parcial1.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(inventory);
-                await _context.SaveChangesAsync();
+                _inventoryService.Update(inventory);
                 return RedirectToAction("Details", "Agency", new { id = inventory.AgencyId });
             }
             return View();
         }
 
         // GET: Inventory/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
-            if (id == null || _context.Inventory == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var inventory = await _context.Inventory.FindAsync(id);
+            var inventory = _inventoryService.GetById(id.Value);
             if (inventory == null)
             {
                 return NotFound();
@@ -106,8 +102,7 @@ namespace guido_sanz_parcial1.Controllers
             {
                 try
                 {
-                    _context.Update(inventory);
-                    await _context.SaveChangesAsync();
+                    _inventoryService.Update(inventory);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -126,15 +121,14 @@ namespace guido_sanz_parcial1.Controllers
         }
 
         // GET: Inventory/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
-            if (id == null || _context.Inventory == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var inventory = await _context.Inventory.Include(x=> x.Moto)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var inventory = _inventoryService.GetById(id.Value);
             if (inventory == null)
             {
                 return NotFound();
@@ -146,25 +140,20 @@ namespace guido_sanz_parcial1.Controllers
         // POST: Inventory/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            if (_context.Inventory == null)
-            {
-                return Problem("Entity set 'MvcInventoryContext.Inventory'  is null.");
-            }
-            var inventory = await _context.Inventory.FindAsync(id);
+            var inventory = _inventoryService.GetById(id);
             if (inventory != null)
             {
-                _context.Inventory.Remove(inventory);
+                _inventoryService.Delete(inventory);
+                
             }
-            
-            await _context.SaveChangesAsync();
             return RedirectToAction("Details", "Agency", new { id = inventory.AgencyId });
         }
 
         private bool InventoryExists(int id)
         {
-          return (_context.Inventory?.Any(e => e.Id == id)).GetValueOrDefault();
+          return _inventoryService.GetById(id) != null;
         }
     }
 }
