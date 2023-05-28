@@ -14,6 +14,7 @@ public class InventoryServiceImpl : IInventoryService
     public void Delete(Inventory obj)
     {
         _context.Inventory.Remove(obj);
+        _context.SaveChanges();
     }
 
     public List<Inventory> GetAll()
@@ -37,5 +38,11 @@ public class InventoryServiceImpl : IInventoryService
     {
         _context.Update(obj);
         _context.SaveChanges();
+    }
+
+    public Inventory? GetInventoryByAgencyIdAndMotoId(int agencyId, int motoId)
+    {
+        var inventory = _context.Inventory.Where(i => i.AgencyId == agencyId && i.MotoId == motoId).FirstOrDefault();
+        return inventory;
     }
 }

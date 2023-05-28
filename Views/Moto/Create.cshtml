@@ -2,8 +2,13 @@
 
 @{
     ViewData["Title"] = "Create";
+    var errorMessage = TempData["ErrorMessage"] as string;
 }
 
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-danger">@errorMessage</div>
+}
 <h1>Crear nueva moto</h1>
 <hr />
 <div class="row">

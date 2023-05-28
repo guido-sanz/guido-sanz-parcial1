@@ -1,7 +1,6 @@
 using guido_sanz_parcial1.Models;
 using guido_sanz_parcial1.Data;
 using guido_sanz_parcial1.ViewModels;
-using Microsoft.EntityFrameworkCore;
 
 namespace guido_sanz_parcial1.Services;
 
@@ -56,4 +55,11 @@ public class MotoServiceImpl : IMotoService
     {
         return from moto in _context.Moto select moto;
     }
+
+    public bool ExistMotoWithBrandAndName(string brand, string model){
+        bool exist = _context.Moto.Any(m => m.Model == model && m.Brand == brand);
+        return exist;
+    }
+
+
 }

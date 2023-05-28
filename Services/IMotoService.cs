@@ -10,4 +10,5 @@ public interface IMotoService
     void Delete(Moto obj);
     Moto? GetById(int id);
     MotoViewModel GetAll(string nameFilter);
+    bool ExistMotoWithBrandAndName(string brand, string model);
 }

@@ -9,4 +9,6 @@ public interface IInventoryService
     void Update(Inventory obj);
     void Delete(Inventory obj);
     Inventory? GetById(int id);
+    Inventory? GetInventoryByAgencyIdAndMotoId(int agencyId, int motoId);
+
 }

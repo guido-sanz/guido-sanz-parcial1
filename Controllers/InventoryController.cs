@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using guido_sanz_parcial1.Data;
 using guido_sanz_parcial1.Models;
 using guido_sanz_parcial1.ViewModels;
 using guido_sanz_parcial1.Services;
@@ -64,8 +63,15 @@ namespace guido_sanz_parcial1.Controllers
         {
             if (ModelState.IsValid)
             {
-                _inventoryService.Update(inventory);
-                return RedirectToAction("Details", "Agency", new { id = inventory.AgencyId });
+                var inven = _inventoryService.GetInventoryByAgencyIdAndMotoId(inventory.AgencyId.Value, inventory.MotoId.Value);
+                if(inventory == null){
+                    _inventoryService.Update(inventory);                    
+                }else{
+                    int quantity = inven.Quantity + inventory.Quantity;
+                    inven.Quantity = quantity;
+                    _inventoryService.Update(inven);
+                }
+                return RedirectToAction("Details", "Agency", new { id = inven.AgencyId });
             }
             return View();
         }

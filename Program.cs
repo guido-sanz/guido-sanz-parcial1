@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using guido_sanz_parcial1.Data;
+using guido_sanz_parcial1.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<MotoContext>(options =>
@@ -8,6 +9,10 @@ builder.Services.AddDbContext<MotoContext>(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IAgencyService, AgencyServiceImpl>();
+builder.Services.AddScoped<IInventoryService, InventoryServiceImpl>();
+builder.Services.AddScoped<IMotoService, MotoServiceImpl>();
 
 var app = builder.Build();
 

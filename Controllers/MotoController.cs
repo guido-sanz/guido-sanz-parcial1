@@ -62,11 +62,18 @@ namespace guido_sanz_parcial1.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("Id,Brand,Model,CubicCentimeters,Type,Price")] Moto moto)
-        {
+        {           
             if (ModelState.IsValid)
             {
-                _motoService.Update(moto);
-                return RedirectToAction(nameof(Index));
+                bool existMoto = _motoService.ExistMotoWithBrandAndName(moto.Brand, moto.Model);
+                if(!existMoto){
+                    _motoService.Update(moto);
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = "¡La moto ya existe!";
+                }              
             }
             return View(moto);
         }
