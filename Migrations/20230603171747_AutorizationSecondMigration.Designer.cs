@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using guido_sanz_parcial1.Data;
 
@@ -10,9 +11,11 @@ using guido_sanz_parcial1.Data;
 namespace guido_sanz_parcial1.Migrations
 {
     [DbContext(typeof(MotoContext))]
-    partial class MotoContextModelSnapshot : ModelSnapshot
+    [Migration("20230603171747_AutorizationSecondMigration")]
+    partial class AutorizationSecondMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");

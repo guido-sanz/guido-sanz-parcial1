@@ -3,9 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using guido_sanz_parcial1.Models;
 using guido_sanz_parcial1.ViewModels;
 using guido_sanz_parcial1.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace guido_sanz_parcial1.Controllers
 {
+    [Authorize]
     public class AgencyController : Controller
     {
         private readonly IAgencyService _agencyService;
