@@ -22,4 +22,9 @@ public class RolesServiceImpl : IRolesService
         var roles = _roleManager.Roles.ToList();
         return roles;
     }
+    public List<IdentityRole> GetAll(string namefilter)
+    {
+        var roles = _roleManager.Roles.Where(x => x.Name.ToLower().Contains(namefilter.ToLower())).ToList();
+        return roles;
+    }
 }

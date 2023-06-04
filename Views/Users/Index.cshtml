@@ -1,14 +1,30 @@
-@using Microsoft.AspNetCore.Identity
-@model List<IdentityUser> 
+@using guido_sanz_parcial1.ViewModels;
+@model guido_sanz_parcial1.ViewModels.UserSearchViewModel;
 
-<h3>Users</h3>
-
-<ul>
-@foreach (var item in Model)
-{
-    <li>
-        @item.UserName | <a asp-action="Edit" asp-route-id="@item.Id">Asignar Role</a>   
-    </li>
-    
+<h3>Usuarios</h3>
+<form method="get" asp-action="Index">
+    <div class="col-2 form-group">
+        <input class="form-control" asp-for="UsernameFilter"/> 
+        <button class="btn btn-primary" type="submit">Buscar</button>          
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre usuario</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Users) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id">Asignar Role</a>
+            </td>
+        </tr>
 }
-</ul>
+    </tbody>
+</table>

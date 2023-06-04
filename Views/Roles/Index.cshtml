@@ -1,11 +1,29 @@
-@using Microsoft.AspNetCore.Identity
-@model List<IdentityRole> 
+@model guido_sanz_parcial1.ViewModels.RolesSearchViewModel;
 
 <h3>Roles</h3>
 
-<ul>
-@foreach (var item in Model)
-{
-    <li>@item.Name</li>
+<form method="get" asp-action="Index">
+    <div class="col-2 form-group">
+        <input class="form-control" asp-for="nameFilter"/> 
+        <button class="btn btn-primary" type="submit">Buscar roles</button>          
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre usuario</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Roles) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+        </tr>
 }
-</ul>
+    </tbody>
+</table>
+<div>
+    <a class="btn btn-success" asp-action="Create">Crear nuevo rol</a>
+</div>

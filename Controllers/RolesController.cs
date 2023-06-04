@@ -21,11 +21,17 @@ public class RolesController : Controller
         _rolesService = rolesService;
     }
 
-    public IActionResult Index()
-    {
-        //listar todos los roles
-        var roles = _rolesService.GetAll();
-        return View(roles);
+    public IActionResult Index(string? nameFilter)
+    {       
+        List<IdentityRole> rolesList;
+        if(!string.IsNullOrEmpty(nameFilter)){
+                rolesList = _rolesService.GetAll(nameFilter);
+            }else{
+                rolesList = _rolesService.GetAll();
+        }
+        var rolesSearchViewModel = new RolesSearchViewModel();
+        rolesSearchViewModel.Roles = rolesList;
+        return View(rolesSearchViewModel);
     }
 
     public IActionResult Create()

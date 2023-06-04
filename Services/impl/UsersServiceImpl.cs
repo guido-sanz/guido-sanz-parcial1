@@ -24,9 +24,9 @@ public class UsersServiceImpl : IUsersService
        return _userManager.Users.ToList();
     }
 
-    public UserEditViewModel GetAll(string nameFilter)
+    public List<IdentityUser> GetAll(string usernameFilter)
     {
-        throw new NotImplementedException();
+        return _userManager.Users.Where(x => x.UserName.ToLower().Contains(usernameFilter.ToLower())).ToList();
     }
 
     public async Task<UserEditViewModel?> GetById(string id)
@@ -49,4 +49,5 @@ public class UsersServiceImpl : IUsersService
              await _userManager.AddToRoleAsync(user, obj.Role);
         }
     }
+
 }

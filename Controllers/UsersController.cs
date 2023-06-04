@@ -23,14 +23,22 @@ public class UsersController : Controller
         _usersService = usersService;
     }
 
-    public IActionResult Index()
+    public IActionResult Index(string? usernameFilter)
     {
-        //listar todos los usuarios
-        var users = _usersService.GetAll();
-        return View(users);
+        UserSearchViewModel userSearchViewModel;
+        List<IdentityUser> usersList;
+
+        if(!string.IsNullOrEmpty(usernameFilter)){
+                usersList = _usersService.GetAll(usernameFilter);
+            }else{
+                usersList = _usersService.GetAll();
+        }
+        userSearchViewModel = new UserSearchViewModel();
+        userSearchViewModel.Users = usersList;       
+        return View(userSearchViewModel);
     }
 
-    [Authorize(Roles = "Administrador")]
+    [Authorize]
     public async Task<IActionResult> Edit(string id)
     {
         var userViewModel = await _usersService.GetById(id);
@@ -38,7 +46,7 @@ public class UsersController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Edit(UserEditViewModel model)
+    public IActionResult Edit(UserEditViewModel model)
     {
         _usersService.Update(model);
         return RedirectToAction("Index");
