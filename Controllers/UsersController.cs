@@ -23,6 +23,7 @@ public class UsersController : Controller
         _usersService = usersService;
     }
 
+    [Authorize(Roles = "admin")]
     public IActionResult Index(string? usernameFilter)
     {
         UserSearchViewModel userSearchViewModel;

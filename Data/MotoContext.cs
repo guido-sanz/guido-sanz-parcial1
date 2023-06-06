@@ -21,6 +21,8 @@ namespace guido_sanz_parcial1.Data
 
         public DbSet<guido_sanz_parcial1.Models.Inventory> Inventory { get; set; } = default!;
 
+        public DbSet<guido_sanz_parcial1.Models.Accesory> Accesory { get; set; } = default!;
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -29,7 +31,11 @@ namespace guido_sanz_parcial1.Data
                 .HasOne(i => i.Moto)
                 .WithMany()
                 .HasForeignKey(i => i.MotoId);
-                
+            
+            modelBuilder.Entity<Moto>()
+            .HasMany(p=> p.Accesories)
+            .WithMany(p=> p.Motos)
+            .UsingEntity("MotoAccesory");    
         }
     }
 

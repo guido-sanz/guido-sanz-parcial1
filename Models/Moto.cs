@@ -19,4 +19,6 @@ public class Moto{
     [Display(Name="Precio")]
     public double Price { get; set; }
 
+    public virtual List<Accesory>? Accesories { get; set; }
+
 }

@@ -20,7 +20,8 @@ public class RolesController : Controller
         _logger = logger;
         _rolesService = rolesService;
     }
-
+    
+    [Authorize(Roles = "admin")]
     public IActionResult Index(string? nameFilter)
     {       
         List<IdentityRole> rolesList;
