@@ -6,7 +6,7 @@ namespace guido_sanz_parcial1.Services;
 public interface IMotoService
 {
     MotoViewModel GetAll();
-    void Update(Moto obj);
+    void Update(MotoCreateViewModel obj);
     void Delete(Moto obj);
     Moto? GetById(int id);
     MotoViewModel GetAll(string nameFilter);

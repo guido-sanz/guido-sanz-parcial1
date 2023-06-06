@@ -1,6 +1,7 @@
 using guido_sanz_parcial1.Models;
 using guido_sanz_parcial1.Data;
 using guido_sanz_parcial1.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace guido_sanz_parcial1.Services;
 
@@ -40,14 +41,20 @@ public class MotoServiceImpl : IMotoService
 
     public Moto? GetById(int id)
     {
-        var moto = _context.Moto
+        var moto = _context.Moto.Include(x => x.Accesories)
                 .FirstOrDefault(m => m.Id == id);
         return moto;        
     }
 
-    public void Update(Moto obj)
+    public void Update(MotoCreateViewModel model)
     {
-        _context.Update(obj);
+        List<Accesory> accesories;
+        var moto = model.Moto;
+        if(model.SelectedAccesories != null && model.SelectedAccesories.Count() > 0){
+            accesories = _context.Accesory.Where(a => model.SelectedAccesories.Contains(a.Id)).ToList();
+            moto.Accesories = accesories;
+        }       
+        _context.Update(moto);
         _context.SaveChanges();
     }
 

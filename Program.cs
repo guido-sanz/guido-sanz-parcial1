@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using guido_sanz_parcial1.Data;
 using guido_sanz_parcial1.Services;
 using Microsoft.AspNetCore.Identity;
@@ -19,6 +18,7 @@ builder.Services.AddScoped<IInventoryService, InventoryServiceImpl>();
 builder.Services.AddScoped<IMotoService, MotoServiceImpl>();
 builder.Services.AddScoped<IUsersService, UsersServiceImpl>();
 builder.Services.AddScoped<IRolesService, RolesServiceImpl>();
+builder.Services.AddScoped<IAccesoryService, AccesoryServiceImpl>();
 
 var app = builder.Build();
 

@@ -12,10 +12,12 @@ namespace guido_sanz_parcial1.Controllers
     {
 
         private readonly IMotoService _motoService;
+        private readonly IAccesoryService _accesoryService;
 
-        public MotoController(IMotoService motoService)
+        public MotoController(IMotoService motoService, IAccesoryService accesoryService)
         {
             _motoService = motoService;
+            _accesoryService = accesoryService;
         }
 
         // GET: Moto
@@ -55,7 +57,10 @@ namespace guido_sanz_parcial1.Controllers
         // GET: Moto/Create
         public IActionResult Create()
         {
-            return View();
+            MotoCreateViewModel model = new MotoCreateViewModel();
+            var accesories = _accesoryService.GetAll();
+            model.Accesories = accesories.Accesories;
+            return View(model);
         }
 
         // POST: Moto/Create
@@ -63,13 +68,13 @@ namespace guido_sanz_parcial1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,Brand,Model,CubicCentimeters,Type,Price")] Moto moto)
+        public IActionResult Create(MotoCreateViewModel model)
         {           
             if (ModelState.IsValid)
             {
-                bool existMoto = _motoService.ExistMotoWithBrandAndName(moto.Brand, moto.Model);
+                bool existMoto = _motoService.ExistMotoWithBrandAndName(model.Moto.Brand, model.Moto.Model);
                 if(!existMoto){
-                    _motoService.Update(moto);
+                    _motoService.Update(model);
                     return RedirectToAction(nameof(Index));
                 }
                 else
@@ -77,7 +82,7 @@ namespace guido_sanz_parcial1.Controllers
                     TempData["ErrorMessage"] = "¡La moto ya existe!";
                 }              
             }
-            return View(moto);
+            return View(model.Moto);
         }
 
         // GET: Moto/Edit/5
@@ -101,9 +106,9 @@ namespace guido_sanz_parcial1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Brand,Model,CubicCentimeters,Type,Price")] Moto moto)
+        public async Task<IActionResult> Edit(int id, MotoCreateViewModel model)
         {
-            if (id != moto.Id)
+            if (id != model.Moto.Id)
             {
                 return NotFound();
             }
@@ -112,11 +117,11 @@ namespace guido_sanz_parcial1.Controllers
             {
                 try
                 {
-                    _motoService.Update(moto);
+                    _motoService.Update(model);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MotoExists(moto.Id))
+                    if (!MotoExists(model.Moto.Id))
                     {
                         return NotFound();
                     }
@@ -127,7 +132,7 @@ namespace guido_sanz_parcial1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(moto);
+            return View(model.Moto);
         }
 
         // GET: Moto/Delete/5
