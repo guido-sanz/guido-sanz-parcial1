@@ -20,12 +20,25 @@ public class AgencyServiceImpl : IAgencyService
         _context.Agency.Remove(obj);
     }
 
-    public Agency? GetAgencyWithInventoryById(int id)
+    public AgencyViewModel? GetAgencyWithInventoryById(int id)
     {
+        int quantityInStock = 0;
+        double total = 0;
+        AgencyViewModel agencyViewModel = new AgencyViewModel();
         var agency = _context.Agency.Include(x=> x.Invertorys).ThenInclude(i => i.Moto)
                 .FirstOrDefault(m => m.Id == id);
 
-        return agency;
+        agencyViewModel.Agency = agency;
+        if(agency.Invertorys != null){
+            foreach(Inventory i in agency.Invertorys){
+                quantityInStock += i.Quantity;
+                total += i.Moto.Price * i.Quantity;
+            }
+        }
+        agencyViewModel.quantityInStock = quantityInStock;
+        agencyViewModel.total = total;
+
+        return agencyViewModel;
     }
 
     public AgencyViewModel GetAll()
@@ -54,15 +67,10 @@ public class AgencyServiceImpl : IAgencyService
         return agency;
     }
 
-    public void Update(Moto obj)
+    public void Update(Agency obj)
     {
         _context.Update(obj);
         _context.SaveChanges();
-    }
-
-    public void Update(Agency obj)
-    {
-        throw new NotImplementedException();
     }
 
     private IQueryable<Agency> GetQuery()

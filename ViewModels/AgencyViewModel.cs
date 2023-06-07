@@ -10,4 +10,12 @@ public class AgencyViewModel{
 
     public Agency Agency { get; set;} = new();
 
+    public double total {get; set;}
+
+    public int quantityInStock {get; set;}
+
+    public int Id {get; set;}
+
+    public int Quantity{get; set;}
+
 }

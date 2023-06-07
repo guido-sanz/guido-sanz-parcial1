@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\guido\\OneDrive\\Escritorio\\guido-sanz-parcial1\\guido-sanz-parcial1.csproj": {}
+    "C:\\Users\\guido\\Escritorio\\guido-sanz-parcial1\\guido-sanz-parcial1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\guido\\OneDrive\\Escritorio\\guido-sanz-parcial1\\guido-sanz-parcial1.csproj": {
+    "C:\\Users\\guido\\Escritorio\\guido-sanz-parcial1\\guido-sanz-parcial1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\guido\\OneDrive\\Escritorio\\guido-sanz-parcial1\\guido-sanz-parcial1.csproj",
+        "projectUniqueName": "C:\\Users\\guido\\Escritorio\\guido-sanz-parcial1\\guido-sanz-parcial1.csproj",
         "projectName": "guido-sanz-parcial1",
-        "projectPath": "C:\\Users\\guido\\OneDrive\\Escritorio\\guido-sanz-parcial1\\guido-sanz-parcial1.csproj",
+        "projectPath": "C:\\Users\\guido\\Escritorio\\guido-sanz-parcial1\\guido-sanz-parcial1.csproj",
         "packagesPath": "C:\\Users\\guido\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\guido\\OneDrive\\Escritorio\\guido-sanz-parcial1\\obj\\",
+        "outputPath": "C:\\Users\\guido\\Escritorio\\guido-sanz-parcial1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\guido\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -10,7 +10,7 @@ public interface IAgencyService
     void Update(Agency obj);
     void Delete(Agency obj);
     Agency? GetById(int id);
-    Agency? GetAgencyWithInventoryById(int id);
+    AgencyViewModel? GetAgencyWithInventoryById(int id);
 
 
 }

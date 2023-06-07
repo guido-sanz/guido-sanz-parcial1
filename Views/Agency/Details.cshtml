@@ -1,29 +1,34 @@
-@model guido_sanz_parcial1.Models.Agency
+@model guido_sanz_parcial1.ViewModels.AgencyViewModel
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Agencia @Html.DisplayFor(model => model.Name)</h1>
+<h1>Agencia @Html.DisplayFor(model => model.Agency.Name)</h1>
 
 <div>
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Address)
+            @Html.DisplayNameFor(model => model.Agency.Address)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Address)
+            @Html.DisplayFor(model => model.Agency.Address)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Phone)
+            @Html.DisplayNameFor(model => model.Agency.Phone)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Phone)
+            @Html.DisplayFor(model => model.Agency.Phone)
         </dd>
     </dl>
 </div>
 
 <h1>Inventario Motos</h1>
+<label for="quantity" class="ms-16">Cantidad de motos en stock:</label>
+    <span id="quantity" class="badge bg-primary ms-2">@Model.quantityInStock</span>
+
+    <label for="total">Total de capital invertido:</label>
+    <span id="total" class="badge bg-success ms-2">$@Model.total</span>
 <div>
     <table class="table">
     <thead>
@@ -47,9 +52,9 @@
         </tr>
     </thead>
     <tbody>
-@if (Model.Invertorys != null)
+@if (Model.Agency.Invertorys != null)
 {
-    @foreach (var item in Model.Invertorys) {
+    @foreach (var item in Model.Agency.Invertorys) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Moto.Brand)
@@ -77,6 +82,7 @@
 </table>
 </div>
 <div>   
-    <a class="btn btn-primary" asp-controller="Inventory" asp-action="Create" asp-route-id="@Model.Id">Agregar moto al inventario</a>
+    <a class="btn btn-primary" asp-controller="Inventory" asp-action="Create" asp-route-id="@Model.Agency.Id">Agregar moto al inventario</a>  
 </div>
+
 

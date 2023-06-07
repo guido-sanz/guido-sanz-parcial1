@@ -144,10 +144,10 @@ namespace guido_sanz_parcial1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var agency = _agencyService.GetAgencyWithInventoryById(id);
-            if (agency != null)
+            var agencyViewModel = _agencyService.GetAgencyWithInventoryById(id);
+            if (agencyViewModel.Agency != null)
             {
-                _agencyService.Delete(agency);               
+                _agencyService.Delete(agencyViewModel.Agency);               
             }
             return RedirectToAction(nameof(Index));
         }
