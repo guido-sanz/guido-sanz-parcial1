@@ -18,6 +18,7 @@ public class MotoServiceImpl : IMotoService
 
     public void Delete(Moto obj)
     {
+        _context.Remove(obj);
         _context.SaveChangesAsync();
     }
 
@@ -32,7 +33,7 @@ public class MotoServiceImpl : IMotoService
     public MotoViewModel GetAll(string nameFilter)
     {
         var query = GetQuery();
-        query = query.Where(x => x.Brand.ToLower().Contains(nameFilter.ToLower()));
+        query = query.Where(x => x.Brand.ToLower().Contains(nameFilter.ToLower()) || x.Model.ToLower().Contains(nameFilter.ToLower()));
         
         MotoViewModel motos = new MotoViewModel();
         motos.Motos = query.ToList();

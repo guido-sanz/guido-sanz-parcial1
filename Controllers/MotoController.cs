@@ -20,7 +20,7 @@ namespace guido_sanz_parcial1.Controllers
             _accesoryService = accesoryService;
         }
 
-        // GET: Moto
+        [Authorize(Roles = "admin, broker")]
         public IActionResult Index(string? nameFilter)
         {
             MotoViewModel motos;

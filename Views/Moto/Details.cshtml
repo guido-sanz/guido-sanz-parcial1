@@ -39,6 +39,17 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Price)
         </dd>
+        <dt class = "col-sm-2">Accesorios</dt>
+        <ul>
+            @if(Model.Accesories != null && Model.Accesories.Count() > 0){
+                @foreach (var item in Model.Accesories)
+                {
+                    <li>@item.Name</li>
+                }
+            }else{
+                <li>No existen accesorios para esta moto</li>
+            }            
+        </ul>
     </dl>
 </div>
 <div>

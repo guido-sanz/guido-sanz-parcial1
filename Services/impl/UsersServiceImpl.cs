@@ -26,7 +26,7 @@ public class UsersServiceImpl : IUsersService
 
     public List<IdentityUser> GetAll(string usernameFilter)
     {
-        return _userManager.Users.Where(x => x.UserName.ToLower().Contains(usernameFilter.ToLower())).ToList();
+        return _userManager.Users.Where(x => x.UserName.ToLower().Contains(usernameFilter.ToLower()) || x.Email.ToLower().Contains(usernameFilter.ToLower())).ToList();
     }
 
     public async Task<UserEditViewModel?> GetById(string id)

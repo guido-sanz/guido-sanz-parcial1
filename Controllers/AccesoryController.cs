@@ -24,7 +24,7 @@ public class AccesoryController : Controller
         }
         return View(accesorySearchViewModel);
     }
-
+    [Authorize(Roles = "admin, broker")]
     public IActionResult Create()
     {
         return View();
@@ -42,6 +42,7 @@ public class AccesoryController : Controller
         return RedirectToAction("Index");
     }
 
+    [Authorize(Roles = "admin, broker")]
     public async Task<IActionResult> Delete(int? id)
     {
         if (id == null)

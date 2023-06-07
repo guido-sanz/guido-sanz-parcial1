@@ -17,7 +17,6 @@ namespace guido_sanz_parcial1.Controllers
             _agencyService = agencyService;
         }
 
-        // GET: Agency
         public IActionResult Index(string? nameFilter)
         {
             AgencyViewModel agencys;
@@ -52,7 +51,7 @@ namespace guido_sanz_parcial1.Controllers
             return View(agency);
         }
 
-        // GET: Agency/Create
+        [Authorize(Roles = "admin, broker")]
         public IActionResult Create()
         {
             return View();
@@ -73,7 +72,7 @@ namespace guido_sanz_parcial1.Controllers
             return View(agency);
         }
 
-        // GET: Agency/Edit/5
+        [Authorize(Roles = "admin, broker")]
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -123,7 +122,7 @@ namespace guido_sanz_parcial1.Controllers
             return View(agency);
         }
 
-        // GET: Agency/Delete/5
+        [Authorize(Roles = "admin, broker")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
