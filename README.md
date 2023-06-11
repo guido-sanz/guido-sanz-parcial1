@@ -33,6 +33,10 @@
     - Seguimiento de las motos vendidas y su estado actual.
     - Generación de informes de ventas, incluyendo datos como agencia, moto vendida, fecha y precio.
 
+- `Funcionalidad negocio`
+    - Al cargar una nueva moto al inventario, si esta moto ya existe se le suma a la cantidad en stock.
+    - Al ingresar al inventario de una oficina se muestra la cantidad total de dinero en stock y la cantidad de motos en stock.
+
 ## 📁 Acceso al proyecto
 
 - `¿Como acceder al proyecto`:
