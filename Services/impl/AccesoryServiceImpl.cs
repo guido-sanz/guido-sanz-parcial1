@@ -29,7 +29,7 @@ public class AccesoryServiceImpl : IAccesoryService
     public AccesorySearchViewModel GetAll(string nameFilter)
     {
         var query = GetQuery();
-        query = query.Where(x => x.Name.ToLower().Contains(nameFilter.ToLower()));
+        query = query.Where(x => x.Name.ToLower().Contains(nameFilter.ToLower()) || x.SerialNumber.ToString().Contains(nameFilter));
         
         AccesorySearchViewModel accesoryViewModel = new AccesorySearchViewModel();
         accesoryViewModel.Accesories = query.ToList();

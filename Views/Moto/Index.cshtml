@@ -7,9 +7,11 @@
 
 <h1>Listado de motos</h1>
 
-<form method="get" asp-action="Index">
-    <div class="col-2 form-group">
-        <input class="form-control" asp-for="NameFilter"/> 
+<form method="get" asp-action="Index" class="row g-3">
+    <div class="col-auto">
+        <input class="form-control" asp-for="NameFilter" placeholder="Marca o modelo"/>     
+    </div>
+    <div class="col-auto">
         <button class="btn btn-primary" type="submit">Buscar</button>          
     </div>
 </form>

@@ -7,10 +7,12 @@
     <div class="container">
         <h1>Listado de agencias de motos</h1>
 
-        <form method="get" asp-action="Index">
-            <div class="col-2 form-group">
-                <input class="form-control" asp-for="NameFilter"/> 
-                <button class="btn btn-primary" type="submit">Buscar</button>          
+        <form method="get" asp-action="Index" class="row g-3">
+            <div class="col-auto">
+                <input class="form-control" asp-for="NameFilter" placeholder="Nombre agencia o dirección"/>                       
+            </div>
+            <div class="col-auto">
+                <button class="col-auto btn btn-primary" type="submit">Buscar</button>   
             </div>
         </form>
         <table class="table table-hover table-responsive max-width-75">

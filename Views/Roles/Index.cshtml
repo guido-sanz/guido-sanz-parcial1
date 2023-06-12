@@ -2,9 +2,11 @@
 
 <h3>Roles</h3>
 
-<form method="get" asp-action="Index">
-    <div class="col-2 form-group">
-        <input class="form-control" asp-for="nameFilter"/> 
+<form method="get" asp-action="Index" class="row g-3">
+    <div class="col-auto">
+        <input class="form-control" asp-for="nameFilter" placeholder="Nombre"/>           
+    </div>
+    <div class="col-auto">
         <button class="btn btn-primary" type="submit">Buscar roles</button>          
     </div>
 </form>
