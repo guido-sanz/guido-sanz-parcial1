@@ -1,5 +1,6 @@
 using guido_sanz_parcial1.Data;
 using guido_sanz_parcial1.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace guido_sanz_parcial1.Services;
 
@@ -31,7 +32,8 @@ public class InventoryServiceImpl : IInventoryService
 
     public Inventory? GetById(int id)
     {
-       return _context.Inventory.FirstOrDefault(m => m.Id == id);
+       return _context.Inventory.Include(x=> x.Moto)
+                .FirstOrDefault(m => m.Id == id);
     }
 
     public void Update(Inventory obj)

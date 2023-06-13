@@ -3,9 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using guido_sanz_parcial1.Models;
 using guido_sanz_parcial1.ViewModels;
 using guido_sanz_parcial1.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace guido_sanz_parcial1.Controllers
 {
+    [Authorize]
     public class InventoryController : Controller
     {
         private readonly IInventoryService _inventoryService;
@@ -44,7 +46,7 @@ namespace guido_sanz_parcial1.Controllers
             return View(inventory);
         }
 
-        // GET: Inventory/Create
+        [Authorize(Roles = "admin, broker")]
         public IActionResult Create(int id)
         {            
             InventoryCreate inventoryCreate = new InventoryCreate();
@@ -76,7 +78,7 @@ namespace guido_sanz_parcial1.Controllers
             return View();
         }
 
-        // GET: Inventory/Edit/5
+        [Authorize(Roles = "admin, broker")]
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -126,7 +128,7 @@ namespace guido_sanz_parcial1.Controllers
             return View(inventory);
         }
 
-        // GET: Inventory/Delete/5
+        [Authorize(Roles = "admin, broker")]
         public IActionResult Delete(int? id)
         {
             if (id == null)
