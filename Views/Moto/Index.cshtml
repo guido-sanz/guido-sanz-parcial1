@@ -5,64 +5,52 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Listado de motos</h1>
+<div class="container">
+  <h1>Listado de motos</h1>
 
-<form method="get" asp-action="Index" class="row g-3">
+  <form method="get" asp-action="Index" class="row g-3">
     <div class="col-auto">
-        <input class="form-control" asp-for="NameFilter" placeholder="Marca o modelo"/>     
+      <input class="form-control" asp-for="NameFilter" placeholder="Marca o modelo" />
     </div>
     <div class="col-auto">
-        <button class="btn btn-primary" type="submit">Buscar</button>          
+      <button class="btn btn-primary" type="submit">Buscar</button>
     </div>
-</form>
+  </form>
 
-<table class="table">
-    <thead>
+  <div class="table-responsive mt-4">
+    <table class="table table-bordered table-striped">
+      <thead class="table-primary">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Moto.Brand)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Moto.Model)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Moto.CubicCentimeters)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Moto.Type)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Moto.Price)
-            </th>
-            <th></th>
+          <th>@Html.DisplayNameFor(model => model.Moto.Brand)</th>
+          <th>@Html.DisplayNameFor(model => model.Moto.Model)</th>
+          <th>@Html.DisplayNameFor(model => model.Moto.CubicCentimeters)</th>
+          <th>@Html.DisplayNameFor(model => model.Moto.Type)</th>
+          <th>@Html.DisplayNameFor(model => model.Moto.Price)</th>
+          <th>Acciones</th>
         </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Motos) {
-        <tr>
+      </thead>
+      <tbody>
+        @foreach (var item in Model.Motos)
+        {
+          <tr>
+            <td>@Html.DisplayFor(modelItem => item.Brand)</td>
+            <td>@Html.DisplayFor(modelItem => item.Model)</td>
+            <td>@Html.DisplayFor(modelItem => item.CubicCentimeters)</td>
+            <td>@Html.DisplayFor(modelItem => item.Type)</td>
+            <td>$@Html.DisplayFor(modelItem => item.Price)</td>
             <td>
-                @Html.DisplayFor(modelItem => item.Brand)
+              <div class="d-flex justify-content-center">
+                <a class="btn btn-primary btn-sm me-2" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                <a class="btn btn-success btn-sm" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
+              </div>
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CubicCentimeters)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
-                $@Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                <a class="btn btn-primary btn-sm mr-2" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-<p>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <p>
     <a class="btn btn-primary" asp-action="Create">Crear nueva moto</a>
-</p>
+  </p>
+</div>

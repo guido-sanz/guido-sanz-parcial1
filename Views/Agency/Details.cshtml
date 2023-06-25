@@ -4,85 +4,86 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Agencia @Html.DisplayFor(model => model.Agency.Name)</h1>
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3 class="card-title">Datos de la agencia</h3>
+                    <hr>
+                    <dl class="row">
+                        <dt class="col-sm-4">Dirección:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Agency.Address)</dd>
+                        <dt class="col-sm-4">Teléfono:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Agency.Phone)</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">Inventario de motos</h2>
+                    <hr>
+                    <div class="d-flex align-items-center mb-3">
+                        <span class="me-2">Cantidad de motos en stock:</span>
+                        <span class="badge bg-primary">@Model.quantityInStock</span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <span class="me-2">Total de capital invertido:</span>
+                        <span class="badge bg-success">$@Model.total</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div>
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Agency.Address)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Agency.Address)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Agency.Phone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Agency.Phone)
-        </dd>
-    </dl>
-</div>
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Tipo</th>
+                        <th>Precio</th>
+                        <th>Cantidad disponible</th>
+                        @if(User.IsInRole("admin") || User.IsInRole("broker")){
+                            <th class="text-center">Acciones</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Agency.Invertorys != null)
+                    {
+                        @foreach (var item in Model.Agency.Invertorys) {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Moto.Brand)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Moto.Model)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Moto.Type)</td>
+                                <td>$@Html.DisplayFor(modelItem => item.Moto.Price)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+                                @if(User.IsInRole("admin") || User.IsInRole("broker")){
+                                    <td class="text-center">
+                                        <div class="btn-group" role="group">
+                                            <a class="btn btn-primary btn-sm me-2" asp-controller="Inventory" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                                            <a class="btn btn-danger btn-sm" asp-controller="Inventory" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                                        </div>
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-<h1>Inventario Motos</h1>
-<label for="quantity" class="ms-16">Cantidad de motos en stock:</label>
-    <span id="quantity" class="badge bg-primary ms-2">@Model.quantityInStock</span>
-
-    <label for="total">Total de capital invertido:</label>
-    <span id="total" class="badge bg-success ms-2">$@Model.total</span>
-<div>
-    <table class="table">
-    <thead>
-        <tr>
-            <th>
-                Marca
-            </th>
-            <th>
-                Modelo
-            </th>
-            <th>
-                Tipo
-            </th>
-            <th>
-                Precio
-            </th>
-            <th>
-                Cantidad disponible
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@if (Model.Agency.Invertorys != null)
-{
-    @foreach (var item in Model.Agency.Invertorys) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Moto.Brand)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Moto.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Moto.Type)
-            </td>
-            <td>
-                $@Html.DisplayFor(modelItem => item.Moto.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                <a class="btn btn-primary"asp-controller="Inventory" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                <a class="btn btn-danger"asp-controller="Inventory" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-            </td>
-        </tr>
+    @if(User.IsInRole("admin") || User.IsInRole("broker")){
+        <div class="mt-2">
+            <a class="btn btn-primary" asp-controller="Inventory" asp-action="Create" asp-route-id="@Model.Agency.Id">Agregar moto al inventario</a>
+        </div>
     }
-}
-    </tbody>
-</table>
-</div>
-<div>   
-    <a class="btn btn-primary" asp-controller="Inventory" asp-action="Create" asp-route-id="@Model.Agency.Id">Agregar moto al inventario</a>  
 </div>
 
 

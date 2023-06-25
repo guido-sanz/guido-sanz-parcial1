@@ -4,33 +4,40 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Editar agencia</h1>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Phone" class="control-label"></label>
-                <input asp-for="Phone" class="form-control" />
-                <span asp-validation-for="Phone" class="text-danger"></span>
-            </div>
-            <div class="form-group mt-3">
-                <input type="submit" value="Guardar" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="container">
+  <h1 class="mb-4">Editar agencia</h1>
+  <hr />
+
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+
+        <div class="form-group">
+          <label asp-for="Name" class="control-label">Nombre</label>
+          <input asp-for="Name" class="form-control" />
+          <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+          <label asp-for="Address" class="control-label">Dirección</label>
+          <input asp-for="Address" class="form-control" />
+          <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+          <label asp-for="Phone" class="control-label">Teléfono</label>
+          <input asp-for="Phone" class="form-control" />
+          <span asp-validation-for="Phone" class="text-danger"></span>
+        </div>
+
+        <div class="form-group text-center mt-4">
+          <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        </div>
+      </form>
     </div>
+  </div>
 </div>
 
 @section Scripts {

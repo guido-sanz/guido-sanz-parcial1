@@ -21,7 +21,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Quantity)
             </th>
-            <th></th>
+            @if(User.IsInRole("admin") || User.IsInRole("broker")){
+                <th></th>
+            }
         </tr>
     </thead>
     <tbody>
@@ -36,9 +38,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Quantity)
             </td>
-            <td>
-                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Editar</a>                
-            </td>
+            @if(User.IsInRole("admin") || User.IsInRole("broker")){
+                <td>
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Editar</a>                
+                </td>
+            }
         </tr>
 }
     </tbody>

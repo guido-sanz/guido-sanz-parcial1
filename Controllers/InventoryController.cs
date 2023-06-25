@@ -66,14 +66,14 @@ namespace guido_sanz_parcial1.Controllers
             if (ModelState.IsValid)
             {
                 var inven = _inventoryService.GetInventoryByAgencyIdAndMotoId(inventory.AgencyId.Value, inventory.MotoId.Value);
-                if(inventory == null){
+                if(inven == null){
                     _inventoryService.Update(inventory);                    
                 }else{
                     int quantity = inven.Quantity + inventory.Quantity;
                     inven.Quantity = quantity;
                     _inventoryService.Update(inven);
                 }
-                return RedirectToAction("Details", "Agency", new { id = inven.AgencyId });
+                return RedirectToAction("Details", "Agency", new { id = inventory.AgencyId });
             }
             return View();
         }
